@@ -10,7 +10,7 @@ import itertools
 
 def all_combinations(input_list):
     combinations = []
-    for r in range(len(input_list) + 1):
+    for r in range(1, len(input_list) + 1):
         combinations += list(itertools.combinations(input_list, r))
 
     def join_tuple_string(strings_tuple) -> str:
@@ -31,11 +31,10 @@ for word in word_list:
 combinations_list = all_combinations(result_list)
 
 for combo in combinations_list:
-    if len(combo) != 0:
-        combo_count = 0
-        for char in combo:
-            if (char != ' ') and (char != fav_char):
-                combo_count += 1
+    combo_count = 0
+    for char in combo:
+        if char != fav_char:
+            combo_count += 1
 
-        if combo_count <= max_char:
-            print("{} ({})".format(combo, combo_count))
+    if combo_count <= max_char:
+        print("{} ({})".format(combo, combo_count))
